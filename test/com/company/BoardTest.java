@@ -14,6 +14,8 @@ import static junit.framework.TestCase.assertTrue;
 public class BoardTest {
     int boardSize3 = 3;
     int boardSize4 = 4;
+    String playerSymbol = "O";
+
     public Board board3 = new Board(boardSize3);
     public Board board4 = new Board(boardSize4);
 
@@ -30,12 +32,14 @@ public class BoardTest {
 
     @Test
     public void verifyCorrectBoardSpacesReturnedOn3x3() throws Exception {
-        assertEquals("Did not return 9 for board with 9 spaces", 9, board3.getBoardSize());
+        Integer boardSize = 9;
+        assertEquals("Did not return 9 for board with 9 spaces", boardSize, board3.getBoardSize());
     }
 
     @Test
     public void verifyCorrectBoardSpacesReturnedOn4x4() throws Exception {
-        assertEquals("Did not return 9 for board with 16 spaces", 16, board4.getBoardSize());
+        Integer boardSize = 16;
+        assertEquals("Did not return 9 for board with 16 spaces", boardSize, board4.getBoardSize());
     }
 
     @Test
@@ -54,7 +58,6 @@ public class BoardTest {
 
     @Test
     public void correctlyreplacesEmptySpaceWithPlayerSymbol3x3() throws Exception {
-        String playerSymbol = "X";
         Integer spaceNum = 1;
         board3.applyMoveToBoard(spaceNum, playerSymbol);
         assertEquals("Did not add player symbol to empty space", playerSymbol, board3.getBoardSpaces().get(spaceNum));
@@ -62,7 +65,6 @@ public class BoardTest {
 
     @Test
     public void correctlyreplacesEmptySpaceWithPlayerSymbol4x4() throws Exception {
-        String playerSymbol = "O";
         Integer spaceNum = 2;
         board3.applyMoveToBoard(spaceNum, playerSymbol);
         assertEquals("Did not add player symbol to empty space", playerSymbol, board3.getBoardSpaces().get(spaceNum));
@@ -70,7 +72,6 @@ public class BoardTest {
 
     @Test
     public void correctlyReturnsTrueIfSpaceIsAvailableForMove3x3() throws Exception {
-        String playerSymbol = "O";
         Integer spaceNum1 = 1;
         Integer spaceNum2 = 2;
         board3.applyMoveToBoard(spaceNum1, playerSymbol);
@@ -79,15 +80,12 @@ public class BoardTest {
 
     @Test
     public void correctlyReturnsFalseIfSpaceIsNotAvailableForMove3x3() throws Exception {
-        String playerSymbol = "O";
         Integer spaceNum1 = 1;
-        Integer spaceNum2 = 2;
         board3.applyMoveToBoard(spaceNum1, playerSymbol);
         assertFalse(board3.spaceIsAvailable(spaceNum1));
     }
     @Test
     public void correctlyReturnsTrueIfSpaceIsAvailableForMove4x4() throws Exception {
-        String playerSymbol = "O";
         Integer spaceNum1 = 1;
         Integer spaceNum2 = 2;
         board4.applyMoveToBoard(spaceNum1, playerSymbol);
@@ -96,9 +94,7 @@ public class BoardTest {
 
     @Test
     public void correctlyReturnsFalseIfSpaceIsNotAvailableForMove4x4() throws Exception {
-        String playerSymbol = "O";
         Integer spaceNum1 = 1;
-        Integer spaceNum2 = 2;
         board4.applyMoveToBoard(spaceNum1, playerSymbol);
         assertFalse(board4.spaceIsAvailable(spaceNum1));
     }

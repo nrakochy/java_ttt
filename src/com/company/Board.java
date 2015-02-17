@@ -10,14 +10,14 @@ public class Board {
     private Map<Integer, String> boardSpaces;
     private String emptySpace = "";
 
-    public Board(int boardSize) {
+    public Board(Integer boardSize) {
         boardSpaces = createBoard(boardSize);
     }
 
-    public Map<Integer, String> createBoard(int boardSize) {
+    public Map<Integer, String> createBoard(Integer boardSize) {
         Map<Integer, String> emptySpaces = new HashMap<Integer, String>();
-        int numBoardSpaces = boardSize * boardSize;
-        int spaceNum = 1;
+        Integer numBoardSpaces = boardSize * boardSize;
+        Integer spaceNum = 1;
         while (spaceNum <= numBoardSpaces) {
             emptySpaces.put(spaceNum, emptySpace);
             ++spaceNum;
@@ -29,7 +29,7 @@ public class Board {
         return boardSpaces;
     }
 
-    public int getBoardSize() {
+    public Integer getBoardSize() {
         return boardSpaces.size();
     }
 
