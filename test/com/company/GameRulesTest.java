@@ -55,4 +55,48 @@ public class GameRulesTest {
         List<Integer> winningRow1 = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4));
         assertEquals("Did not return winning row combo for 4x4", winningRow1, rules3x3.findWinningRow(spaceNum, rowLength));
     }
+
+
+    @Test
+    public void correctlyReturnsSingleWinningColumn3x3() throws Exception {
+        Integer spaceNum = 1;
+        Integer columnSize = 3;
+        List<Integer> winningColumn1 = new ArrayList<Integer>(Arrays.asList(1, 4, 7));
+        assertEquals("Did not return winning row combo for 3x3", winningColumn1, rules3x3.findWinningColumn(spaceNum, columnSize));
+    }
+
+    @Test
+    public void correctlyReturnsSingleWinningColumn4x4() throws Exception {
+        Integer spaceNum = 1;
+        Integer columnSize = 4;
+        List<Integer> winningColumn1 = new ArrayList<Integer>(Arrays.asList(1, 5, 9, 13));
+        assertEquals("Did not return winning row combo for 3x3", winningColumn1, rules4x4.findWinningColumn(spaceNum, columnSize));
+    }
+
+    @Test
+    public void correctlyReturnsListOfWinningColumnsFor3x3() throws Exception {
+        List<Integer> winningColumn1 = new ArrayList<Integer>(Arrays.asList(1, 4, 7));
+        List<Integer> winningColumn2 = new ArrayList<Integer>(Arrays.asList(2, 5, 8));
+        List<Integer> winningColumn3 = new ArrayList<Integer>(Arrays.asList(3, 6, 9));
+        List<List> winningColumnCombos = new ArrayList<List>();
+        winningColumnCombos.add(winningColumn1);
+        winningColumnCombos.add(winningColumn2);
+        winningColumnCombos.add(winningColumn3);
+        assertEquals("Did not return winning column combos for 3x3", winningColumnCombos, rules3x3.findWinningColumns());
+    }
+
+
+    @Test
+    public void correctlyReturnsListOfWinningColumnsFor4x4() throws Exception {
+        List<Integer> winningColumn1 = new ArrayList<Integer>(Arrays.asList(1, 5, 9, 13));
+        List<Integer> winningColumn2 = new ArrayList<Integer>(Arrays.asList(2, 6, 10, 14));
+        List<Integer> winningColumn3 = new ArrayList<Integer>(Arrays.asList(3, 7, 11, 15));
+        List<Integer> winningColumn4 = new ArrayList<Integer>(Arrays.asList(4, 8, 12, 16));
+        List<List> winningColumnCombos = new ArrayList<List>();
+        winningColumnCombos.add(winningColumn1);
+        winningColumnCombos.add(winningColumn2);
+        winningColumnCombos.add(winningColumn3);
+        winningColumnCombos.add(winningColumn4);
+        assertEquals("Did not return winning column combos for 4x4", winningColumnCombos, rules4x4.findWinningColumns());
+    }
 }

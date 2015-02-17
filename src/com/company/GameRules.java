@@ -31,17 +31,22 @@ public class GameRules{
     }
 
     public List<List> findWinningColumns(){
-        List<List> winningRowCombos = new ArrayList<List>();
+        List<List> winningColumnCombos = new ArrayList<List>();
         Integer spaceNum = 1;
-        while(winningRowCombos.size() < boardSize){
-            List<Integer> winningRow = new ArrayList<Integer>();
-            while(winningRow.size() < boardSize){
-                winningRow.add(spaceNum);
-                spaceNum++;
-            }
-            winningRowCombos.add(winningRow);
+        while(winningColumnCombos.size() < boardSize){
+            List<Integer> winner = findWinningColumn(spaceNum, boardSize);
+            winningColumnCombos.add(winner);
+            ++spaceNum;
         }
-        return winningRowCombos;
+        return winningColumnCombos;
     }
 
+    public List<Integer> findWinningColumn(Integer spaceNum, Integer columnSize) {
+        List<Integer> winningColumn = new ArrayList<Integer>();
+        while (winningColumn.size() < columnSize) {
+            winningColumn.add(spaceNum);
+            spaceNum += columnSize;
+        }
+        return winningColumn;
+    }
 }
