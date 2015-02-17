@@ -7,13 +7,12 @@ import java.util.Map;
 
 public class Board {
 
-    public Map<Integer, String> boardSpaces;
+    private Map<Integer, String> boardSpaces;
     private String emptySpace = "";
 
     public Board(int boardSize) {
         boardSpaces = createBoard(boardSize);
     }
-
 
     public Map<Integer, String> createBoard(int boardSize) {
         Map<Integer, String> emptySpaces = new HashMap<Integer, String>();
@@ -24,6 +23,10 @@ public class Board {
             ++spaceNum;
         }
         return emptySpaces;
+    }
+
+    public Map<Integer, String> getBoardSpaces(){
+        return boardSpaces;
     }
 
     public int getBoardSize() {
@@ -40,6 +43,13 @@ public class Board {
         }
         return openSpaces;
     }
+
+    public Map<Integer, String> applyMoveToBoard(Integer spaceNum, String playerSymbol ){
+        boardSpaces.put(spaceNum, playerSymbol);
+        return boardSpaces;
+    }
+
+
 
 }
 

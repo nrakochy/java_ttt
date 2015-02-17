@@ -18,12 +18,12 @@ public class BoardTest {
 
     @Test
     public void verify3x3BoardCreationRendersHashMapWithLengthOf9() throws Exception {
-        assertEquals("Did not create 3x3 board", 9, board3.boardSpaces.size());
+        assertEquals("Did not create 3x3 board", 9, board3.getBoardSpaces().size());
     }
 
     @Test
     public void verify4x4BoardCreationRendersHashMapWithLengthOf16() throws Exception {
-        assertEquals("Did not create 3x3 board", 16, board4.boardSpaces.size());
+        assertEquals("Did not create 3x3 board", 16, board4.getBoardSpaces().size());
     }
 
     @Test
@@ -48,6 +48,21 @@ public class BoardTest {
         List<Integer> openBoard =
                 new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16));
         assertEquals("Did not return 16 open spaces", openBoard, board4.findOpenSpaces());
+    }
 
+    @Test
+    public void correctlyreplacesEmptySpaceWithPlayerSymbol3x3() throws Exception {
+        String playerSymbol = "X";
+        Integer spaceNum = 1;
+        board3.applyMoveToBoard(spaceNum, playerSymbol);
+        assertEquals("Did not add player symbol to empty space", playerSymbol, board3.getBoardSpaces().get(spaceNum));
+    }
+
+    @Test
+    public void correctlyreplacesEmptySpaceWithPlayerSymbol4x4() throws Exception {
+        String playerSymbol = "O";
+        Integer spaceNum = 2;
+        board3.applyMoveToBoard(spaceNum, playerSymbol);
+        assertEquals("Did not add player symbol to empty space", playerSymbol, board3.getBoardSpaces().get(spaceNum));
     }
 }
