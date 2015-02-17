@@ -49,7 +49,9 @@ public class Board {
         return boardSpaces;
     }
 
-
+    public Boolean spaceIsAvailable(Integer spaceNum){
+        return boardSpaces.get(spaceNum) == emptySpace;
+    }
 
 }
 

@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.assertTrue;
 
 
 public class BoardTest {
@@ -64,5 +66,40 @@ public class BoardTest {
         Integer spaceNum = 2;
         board3.applyMoveToBoard(spaceNum, playerSymbol);
         assertEquals("Did not add player symbol to empty space", playerSymbol, board3.getBoardSpaces().get(spaceNum));
+    }
+
+    @Test
+    public void correctlyReturnsTrueIfSpaceIsAvailableForMove3x3() throws Exception {
+        String playerSymbol = "O";
+        Integer spaceNum1 = 1;
+        Integer spaceNum2 = 2;
+        board3.applyMoveToBoard(spaceNum1, playerSymbol);
+        assertTrue(board3.spaceIsAvailable(spaceNum2));
+    }
+
+    @Test
+    public void correctlyReturnsFalseIfSpaceIsNotAvailableForMove3x3() throws Exception {
+        String playerSymbol = "O";
+        Integer spaceNum1 = 1;
+        Integer spaceNum2 = 2;
+        board3.applyMoveToBoard(spaceNum1, playerSymbol);
+        assertFalse(board3.spaceIsAvailable(spaceNum1));
+    }
+    @Test
+    public void correctlyReturnsTrueIfSpaceIsAvailableForMove4x4() throws Exception {
+        String playerSymbol = "O";
+        Integer spaceNum1 = 1;
+        Integer spaceNum2 = 2;
+        board4.applyMoveToBoard(spaceNum1, playerSymbol);
+        assertTrue(board4.spaceIsAvailable(spaceNum2));
+    }
+
+    @Test
+    public void correctlyReturnsFalseIfSpaceIsNotAvailableForMove4x4() throws Exception {
+        String playerSymbol = "O";
+        Integer spaceNum1 = 1;
+        Integer spaceNum2 = 2;
+        board4.applyMoveToBoard(spaceNum1, playerSymbol);
+        assertFalse(board4.spaceIsAvailable(spaceNum1));
     }
 }
