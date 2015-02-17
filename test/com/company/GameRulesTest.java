@@ -99,4 +99,29 @@ public class GameRulesTest {
         winningColumnCombos.add(winningColumn4);
         assertEquals("Did not return winning column combos for 4x4", winningColumnCombos, rules4x4.findWinningColumns());
     }
+
+    @Test
+    public void correctlyReturnsWinningLeftDiagonal3x3() throws Exception {
+        List<Integer> winningLeftDiagonal = new ArrayList<Integer>(Arrays.asList(1, 5, 9));
+        assertEquals("Did not return winning left diagonal 3x3", winningLeftDiagonal, rules3x3.findWinningLeftDiagonal());
+    }
+
+
+    @Test
+    public void correctlyReturnsWinningLeftDiagonal4x4() throws Exception {
+        List<Integer> winningLeftDiagonal = new ArrayList<Integer>(Arrays.asList(1, 6, 11, 16));
+        assertEquals("Did not return winning left diagonal 4x4", winningLeftDiagonal, rules4x4.findWinningLeftDiagonal());
+    }
+
+    @Test
+    public void correctlyReturnsWinningRightDiagonal3x3() throws Exception {
+        List<Integer> winningRightDiagonal = new ArrayList<Integer>(Arrays.asList(3, 5, 7));
+        assertEquals("Did not return winning right diagonal 3x3", winningRightDiagonal, rules3x3.findWinningRightDiagonal());
+    }
+
+    @Test
+    public void correctlyReturnsWinningRightDiagonal4x4() throws Exception {
+        List<Integer> winningRightDiagonal = new ArrayList<Integer>(Arrays.asList(4, 7, 10, 13));
+        assertEquals("Did not return winning right diagonal 4x4", winningRightDiagonal, rules4x4.findWinningRightDiagonal());
+    }
 }

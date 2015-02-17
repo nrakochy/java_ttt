@@ -49,4 +49,24 @@ public class GameRules{
         }
         return winningColumn;
     }
+
+    public List<Integer> findWinningLeftDiagonal() {
+        Integer spaceNum = 1;
+        List<Integer> winningLeftDiagonal = new ArrayList<Integer>();
+        while (winningLeftDiagonal.size() < boardSize) {
+            winningLeftDiagonal.add(spaceNum);
+            spaceNum = spaceNum + boardSize + 1;
+        }
+        return winningLeftDiagonal;
+    }
+
+        public List<Integer> findWinningRightDiagonal() {
+        Integer spaceNum = boardSize;
+        List<Integer> winningRightDiagonal = new ArrayList<Integer>();
+        while (winningRightDiagonal.size() < boardSize) {
+            winningRightDiagonal.add(spaceNum);
+            spaceNum = (spaceNum + boardSize) - 1;
+        }
+        return winningRightDiagonal;
+    }
 }
