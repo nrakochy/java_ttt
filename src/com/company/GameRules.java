@@ -6,14 +6,19 @@ import java.util.List;
 public class GameRules{
 
     private Integer boardSize;
-    public List<List> allWinningCombos;
+    public List<List> allWinningCombos = new ArrayList<List>();
 
     public GameRules(Integer boardSize){
         this.boardSize = boardSize;
-        allWinningCombos = new ArrayList<List>();
+        findAllWinningCombos();
     }
 
-    public List<List> findAllWinningCombos(){
+
+    public List<List> getAllWinningCombos(){
+        return allWinningCombos;
+    }
+
+    public void findAllWinningCombos(){
         List<List> winningRows = findWinningRows();
         List<List> winningColumns = findWinningColumns();
         List<Integer> winningLeftDiagonal = findWinningLeftDiagonal();
@@ -22,7 +27,6 @@ public class GameRules{
         addCombosToListOfAllWinners(winningColumns);
         allWinningCombos.add(winningLeftDiagonal);
         allWinningCombos.add(winningRightDiagonal);
-        return allWinningCombos;
     }
 
     public List<List> findWinningRows(){

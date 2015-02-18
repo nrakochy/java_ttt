@@ -87,7 +87,7 @@ public class GameRulesTest {
 
     @Test
     public void correctlyReturnsAllWinningCombinations3x3Board() throws Exception {
-        assertEquals("Did not return single row combo for 3x3", winning3x3Combos, rules3x3.findAllWinningCombos());
+        assertEquals("Did not return single row combo for 3x3", winning3x3Combos, rules3x3.getAllWinningCombos());
     }
 
     @Test
@@ -135,6 +135,6 @@ public class GameRulesTest {
 
     @Test
     public void correctlyReturnsListOfAllWinningCombos4x4() throws Exception {
-        assertEquals("Did not return all winning combinations", winning4x4Combos, rules4x4.findAllWinningCombos());
+        assertEquals("Did not return all winning combinations", winning4x4Combos, rules4x4.getAllWinningCombos());
     }
 }
