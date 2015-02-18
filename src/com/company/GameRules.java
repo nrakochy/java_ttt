@@ -15,6 +15,13 @@ public class GameRules{
         return allWinningCombos.contains(combo);
     }
 
+    public Boolean hasAWinner(List<List> playerCombinations){
+        for(List combo : playerCombinations){
+            if(isAWinner(combo)){ return true; }
+        }
+        return false;
+    }
+
     public List<List> getAllWinningCombos(){
         return allWinningCombos;
     }

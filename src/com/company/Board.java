@@ -35,7 +35,7 @@ public class Board {
 
     public List<Integer> findOpenSpaces(){
         List<Integer> openSpaces = new ArrayList();
-        for (Map.Entry<Integer, String> space : boardSpaces.entrySet()){
+        for(Map.Entry<Integer, String> space : boardSpaces.entrySet()){
             String spaceValue = space.getValue();
             if(spaceValue == emptySpace){
                 openSpaces.add(space.getKey());
@@ -51,6 +51,10 @@ public class Board {
 
     public Boolean spaceIsAvailable(Integer spaceNum){
         return boardSpaces.get(spaceNum) == emptySpace;
+    }
+
+    public Boolean boardIsFull(){
+        return findOpenSpaces().size() == 0;
     }
 
 }

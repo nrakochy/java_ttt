@@ -98,4 +98,23 @@ public class BoardTest {
         board4.applyMoveToBoard(spaceNum1, playerSymbol);
         assertFalse(board4.spaceIsAvailable(spaceNum1));
     }
+
+    @Test
+    public void returnsTrueIfNoOpensSpacesOnTheBoard() throws Exception {
+        board3.applyMoveToBoard(1, playerSymbol);
+        board3.applyMoveToBoard(2, playerSymbol);
+        board3.applyMoveToBoard(3, playerSymbol);
+        board3.applyMoveToBoard(4, playerSymbol);
+        board3.applyMoveToBoard(5, playerSymbol);
+        board3.applyMoveToBoard(6, playerSymbol);
+        board3.applyMoveToBoard(7, playerSymbol);
+        board3.applyMoveToBoard(8, playerSymbol);
+        board3.applyMoveToBoard(9, playerSymbol);
+        assertTrue(board3.boardIsFull());
+    }
+
+    @Test
+    public void returnsFalseOnNewBoardFullOfEmptySpaces() throws Exception {
+        assertFalse(board3.boardIsFull());
+    }
 }
