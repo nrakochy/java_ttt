@@ -1,10 +1,8 @@
 package com.company;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameRules{
-
     private Integer boardSize;
     private List<List> allWinningCombos = new ArrayList<List>();
 
@@ -16,7 +14,6 @@ public class GameRules{
     public Boolean isAWinner(List combo){
         return allWinningCombos.contains(combo);
     }
-
 
     public List<List> getAllWinningCombos(){
         return allWinningCombos;
