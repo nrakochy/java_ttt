@@ -11,35 +11,15 @@ public class GameRules{
         findAllWinningCombos();
     }
 
-    public Boolean isAWinner(List combo){
-        return allWinningCombos.contains(combo);
+    public Boolean isAWinner(List winningCombo, List playerCombinations){
+        return playerCombinations.containsAll(winningCombo);
     }
 
-    public Boolean hasAWinner(List<List> playerCombinations){
-        for(List combo : playerCombinations){
-            if(isAWinner(combo)){ return true; }
+    public Boolean hasAWinner(List<Integer> playerCombinations){
+        for(List combo : allWinningCombos){
+            if(isAWinner(combo, playerCombinations)){ return true; }
         }
         return false;
-    }
-
-    public List<List> generateMovePermutations(List<Integer> playerMoves){
-        if(playerMoves.size() == 0){
-            List<List> result = new ArrayList();
-            result.add(new ArrayList<Integer>());
-            return result;
-        }
-
-        Integer firstElement = playerMoves.remove(0);
-        List<List>  allPlayerMoveCombos= new ArrayList();
-        List<List>  allPermutations = generateMovePermutations(playerMoves);
-        for(List<Integer> subSet : allPermutations ){
-            for(Integer index = 0; index <= subSet.size(); index++) {
-                List<Integer> temp = new ArrayList<Integer>(subSet);
-                temp.add(index, firstElement);
-                allPlayerMoveCombos.add(temp);
-            }
-        }
-        return allPlayerMoveCombos;
     }
 
     public List<List> getAllWinningCombos(){

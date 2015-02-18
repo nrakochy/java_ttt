@@ -16,7 +16,7 @@ public class GameReferee {
         return board.spaceIsAvailable(move);
     }
 
-    public Boolean checkForWin(List<List> playerMoves){
+    public Boolean checkForWin(List<Integer> playerMoves){
         return rules.hasAWinner(playerMoves);
     }
 

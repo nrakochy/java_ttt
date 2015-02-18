@@ -140,58 +140,44 @@ public class GameRulesTest {
 
     @Test
     public void returnsTrueIfListIsAWinningCombo3x3() throws Exception {
-        assertTrue("Did not evaluate list as winning combo", rules3x3.isAWinner(winning3x3Row1));
+        List<Integer> winnerRow = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4));
+        assertTrue("Did not evaluate list as winning combo", rules3x3.isAWinner(winning3x3Row1, winnerRow));
+    }
+
+    @Test
+    public void returnsTrueIfListHasAWinningCombo3x3RegardlessOfOrder() throws Exception {
+        List<Integer> winnerRow = new ArrayList<Integer>(Arrays.asList(1, 2, 4, 8, 3));
+        assertTrue("Did not evaluate list as winning combo", rules3x3.isAWinner(winning3x3Row1, winnerRow));
     }
 
     @Test
     public void returnsTrueIfListIsAWinningCombo4x4() throws Exception {
-        assertTrue("Did not evaluate list as winning combo", rules4x4.isAWinner(winning4x4Row1));
+        List<Integer> winnerRow = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4));
+        assertTrue("Did not evaluate list as winning combo", rules4x4.isAWinner(winning4x4Row1, winnerRow));
     }
 
     @Test
     public void returnsFalseIfListIsANotWinningCombo3x3() throws Exception {
-        List<Integer> loserRow = new ArrayList<Integer>(Arrays.asList(1, 3, 9));
-        assertFalse("Did not evaluate list as winning combo", rules3x3.isAWinner(loserRow));
+        List<Integer> loserRow = new ArrayList<Integer>(Arrays.asList(1, 3, 9, 4));
+        assertFalse("Did not evaluate list as winning combo", rules3x3.hasAWinner(loserRow));
     }
 
 
     @Test
     public void returnsFalseIfListIsANotWinningComboLessThan3Elements() throws Exception {
         List<Integer> loserRow = new ArrayList<Integer>(Arrays.asList(1, 3));
-        assertFalse("Did not evaluate list as winning combo", rules3x3.isAWinner(loserRow));
+        assertFalse("Did not evaluate list as winning combo", rules3x3.hasAWinner(loserRow));
     }
 
     @Test
     public void returnsFalseIfListIsLosingComboLessThan4Elements() throws Exception {
         List<Integer> loserRow = new ArrayList<Integer>(Arrays.asList(1, 3, 9));
-        assertFalse("Did not evaluate list as winning combo", rules4x4.isAWinner(loserRow));
+        assertFalse("Did not evaluate list as winning combo", rules4x4.hasAWinner(loserRow));
     }
 
     @Test
-    public void returnsFalseIfListIsNotWinningCombo4x4() throws Exception {
+    public void returnsFalseIfListDoesNotHaveWinningCombo4x4() throws Exception {
         List<Integer> loserRow = new ArrayList<Integer>(Arrays.asList(1, 3, 9, 10));
-        assertFalse("Did not evaluate list as winning combo", rules4x4.isAWinner(loserRow));
-    }
-
-    @Test
-    public void recursivelyReturnsAllPermutationsOfGivenArray() throws Exception {
-        List<Integer> movesPlayed = new ArrayList<Integer>(Arrays.asList(1, 2, 3));
-        List<Integer> combo1 = new ArrayList<Integer>(Arrays.asList(1, 2, 3));
-        List<Integer> combo2 = new ArrayList<Integer>(Arrays.asList(2, 1, 3));
-        List<Integer> combo3 = new ArrayList<Integer>(Arrays.asList(2, 3, 1));
-        List<Integer> combo4 = new ArrayList<Integer>(Arrays.asList(1, 3, 2));
-        List<Integer> combo5 = new ArrayList<Integer>(Arrays.asList(3, 1, 2));
-        List<Integer> combo6 = new ArrayList<Integer>(Arrays.asList(3, 2, 1));
-        List<List<Integer>> expectedAnswer = Arrays.asList(combo1, combo2, combo3, combo4, combo5, combo6);
-        assertEquals("Did not return permutations for list of 3", expectedAnswer, rules3x3.generateMovePermutations(movesPlayed));
-    }
-
-    @Test
-    public void recursivelyAllPermutationsOfGivenArray() throws Exception {
-        List<Integer> movesPlayed = new ArrayList<Integer>(Arrays.asList(1, 2));
-        List<Integer> combo1 = new ArrayList<Integer>(Arrays.asList(1, 2));
-        List<Integer> combo2 = new ArrayList<Integer>(Arrays.asList(2, 1));
-        List<List<Integer>> expectedAnswer = Arrays.asList(combo1, combo2);
-        assertEquals("Did not return permutations for list of 3", expectedAnswer, rules3x3.generateMovePermutations(movesPlayed));
+        assertFalse("Did not evaluate list as winning combo", rules4x4.hasAWinner(loserRow));
     }
 }
