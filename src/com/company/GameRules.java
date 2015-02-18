@@ -6,11 +6,15 @@ import java.util.List;
 public class GameRules{
 
     private Integer boardSize;
-    public List<List> allWinningCombos = new ArrayList<List>();
+    private List<List> allWinningCombos = new ArrayList<List>();
 
     public GameRules(Integer boardSize){
         this.boardSize = boardSize;
         findAllWinningCombos();
+    }
+
+    public Boolean isAWinner(List combo){
+        return allWinningCombos.contains(combo);
     }
 
 

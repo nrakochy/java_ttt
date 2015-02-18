@@ -137,4 +137,39 @@ public class GameRulesTest {
     public void correctlyReturnsListOfAllWinningCombos4x4() throws Exception {
         assertEquals("Did not return all winning combinations", winning4x4Combos, rules4x4.getAllWinningCombos());
     }
+
+    @Test
+    public void returnsTrueIfListIsAWinningCombo3x3() throws Exception {
+        assertTrue("Did not evaluate list as winning combo", rules3x3.isAWinner(winning3x3Row1));
+    }
+
+    @Test
+    public void returnsTrueIfListIsAWinningCombo4x4() throws Exception {
+        assertTrue("Did not evaluate list as winning combo", rules4x4.isAWinner(winning4x4Row1));
+    }
+
+    @Test
+    public void returnsFalseIfListIsANotWinningCombo3x3() throws Exception {
+        List<Integer> loserRow = new ArrayList<Integer>(Arrays.asList(1, 3, 9));
+        assertFalse("Did not evaluate list as winning combo", rules3x3.isAWinner(loserRow));
+    }
+
+
+    @Test
+    public void returnsFalseIfListIsANotWinningComboLessThan3Elements() throws Exception {
+        List<Integer> loserRow = new ArrayList<Integer>(Arrays.asList(1, 3));
+        assertFalse("Did not evaluate list as winning combo", rules3x3.isAWinner(loserRow));
+    }
+
+    @Test
+    public void returnsFalseIfListIsLosingComboLessThan4Elements() throws Exception {
+        List<Integer> loserRow = new ArrayList<Integer>(Arrays.asList(1, 3, 9));
+        assertFalse("Did not evaluate list as winning combo", rules4x4.isAWinner(loserRow));
+    }
+
+    @Test
+    public void returnsFalseIfListIsNotWinningCombo4x4() throws Exception {
+        List<Integer> loserRow = new ArrayList<Integer>(Arrays.asList(1, 3, 9, 10));
+        assertFalse("Did not evaluate list as winning combo", rules4x4.isAWinner(loserRow));
+    }
 }
