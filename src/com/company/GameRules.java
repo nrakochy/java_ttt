@@ -6,8 +6,23 @@ import java.util.List;
 public class GameRules{
 
     private Integer boardSize;
+    public List<List> allWinningCombos;
+
     public GameRules(Integer boardSize){
         this.boardSize = boardSize;
+        allWinningCombos = new ArrayList<List>();
+    }
+
+    public List<List> findAllWinningCombos(){
+        List<List> winningRows = findWinningRows();
+        List<List> winningColumns = findWinningColumns();
+        List<Integer> winningLeftDiagonal = findWinningLeftDiagonal();
+        List<Integer> winningRightDiagonal = findWinningRightDiagonal();
+        addCombosToListOfAllWinners(winningRows);
+        addCombosToListOfAllWinners(winningColumns);
+        allWinningCombos.add(winningLeftDiagonal);
+        allWinningCombos.add(winningRightDiagonal);
+        return allWinningCombos;
     }
 
     public List<List> findWinningRows(){
@@ -60,7 +75,7 @@ public class GameRules{
         return winningLeftDiagonal;
     }
 
-        public List<Integer> findWinningRightDiagonal() {
+    public List<Integer> findWinningRightDiagonal() {
         Integer spaceNum = boardSize;
         List<Integer> winningRightDiagonal = new ArrayList<Integer>();
         while (winningRightDiagonal.size() < boardSize) {
@@ -68,5 +83,11 @@ public class GameRules{
             spaceNum = (spaceNum + boardSize) - 1;
         }
         return winningRightDiagonal;
+    }
+
+    private void addCombosToListOfAllWinners(List<List> winningCombos){
+        for(List combo : winningCombos){
+            allWinningCombos.add(combo);
+        }
     }
 }
