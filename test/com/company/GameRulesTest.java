@@ -172,4 +172,26 @@ public class GameRulesTest {
         List<Integer> loserRow = new ArrayList<Integer>(Arrays.asList(1, 3, 9, 10));
         assertFalse("Did not evaluate list as winning combo", rules4x4.isAWinner(loserRow));
     }
+
+    @Test
+    public void recursivelyReturnsAllPermutationsOfGivenArray() throws Exception {
+        List<Integer> movesPlayed = new ArrayList<Integer>(Arrays.asList(1, 2, 3));
+        List<Integer> combo1 = new ArrayList<Integer>(Arrays.asList(1, 2, 3));
+        List<Integer> combo2 = new ArrayList<Integer>(Arrays.asList(2, 1, 3));
+        List<Integer> combo3 = new ArrayList<Integer>(Arrays.asList(2, 3, 1));
+        List<Integer> combo4 = new ArrayList<Integer>(Arrays.asList(1, 3, 2));
+        List<Integer> combo5 = new ArrayList<Integer>(Arrays.asList(3, 1, 2));
+        List<Integer> combo6 = new ArrayList<Integer>(Arrays.asList(3, 2, 1));
+        List<List<Integer>> expectedAnswer = Arrays.asList(combo1, combo2, combo3, combo4, combo5, combo6);
+        assertEquals("Did not return permutations for list of 3", expectedAnswer, rules3x3.generateMovePermutations(movesPlayed));
+    }
+
+    @Test
+    public void recursivelyAllPermutationsOfGivenArray() throws Exception {
+        List<Integer> movesPlayed = new ArrayList<Integer>(Arrays.asList(1, 2));
+        List<Integer> combo1 = new ArrayList<Integer>(Arrays.asList(1, 2));
+        List<Integer> combo2 = new ArrayList<Integer>(Arrays.asList(2, 1));
+        List<List<Integer>> expectedAnswer = Arrays.asList(combo1, combo2);
+        assertEquals("Did not return permutations for list of 3", expectedAnswer, rules3x3.generateMovePermutations(movesPlayed));
+    }
 }

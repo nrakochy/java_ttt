@@ -22,6 +22,26 @@ public class GameRules{
         return false;
     }
 
+    public List<List> generateMovePermutations(List<Integer> playerMoves){
+        if(playerMoves.size() == 0){
+            List<List> result = new ArrayList();
+            result.add(new ArrayList<Integer>());
+            return result;
+        }
+
+        Integer firstElement = playerMoves.remove(0);
+        List<List>  allPlayerMoveCombos= new ArrayList();
+        List<List>  allPermutations = generateMovePermutations(playerMoves);
+        for(List<Integer> subSet : allPermutations ){
+            for(Integer index = 0; index <= subSet.size(); index++) {
+                List<Integer> temp = new ArrayList<Integer>(subSet);
+                temp.add(index, firstElement);
+                allPlayerMoveCombos.add(temp);
+            }
+        }
+        return allPlayerMoveCombos;
+    }
+
     public List<List> getAllWinningCombos(){
         return allWinningCombos;
     }

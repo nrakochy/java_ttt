@@ -32,11 +32,6 @@ public class GameRefereeTest {
     }
 
     @Test
-    public void returnsFalseIfMovesAreStillAvailableOnTheBoard () throws Exception {
-        assertFalse("Did not return false for board with moves available", game.checkForTie());
-    }
-
-    @Test
     public void returnsTrueIfNoMovesAreStillAvailableOnTheBoard () throws Exception {
         String playerSymbol = "X";
         board.applyMoveToBoard(1, playerSymbol);
@@ -49,5 +44,10 @@ public class GameRefereeTest {
         board.applyMoveToBoard(8, playerSymbol);
         board.applyMoveToBoard(9, playerSymbol);
         assertTrue("Did not return true for open space", game.checkForTie());
+    }
+
+    @Test
+    public void returnsFalseIfMovesAreStillAvailableOnTheBoard () throws Exception {
+        assertFalse("Did not return false for board with moves available", game.checkForTie());
     }
 }

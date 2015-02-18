@@ -117,4 +117,12 @@ public class BoardTest {
     public void returnsFalseOnNewBoardFullOfEmptySpaces() throws Exception {
         assertFalse(board3.boardIsFull());
     }
+
+    @Test
+    public void returnsListOfPlayerMoves() throws Exception {
+        List<Integer> expectedResult = new ArrayList<Integer>(Arrays.asList(1, 2));
+        board3.applyMoveToBoard(1, playerSymbol);
+        board3.applyMoveToBoard(2, playerSymbol);
+        assertEquals("Did not return list of moves played by player", expectedResult, board3.findPlayerMoves(playerSymbol));
+    }
 }

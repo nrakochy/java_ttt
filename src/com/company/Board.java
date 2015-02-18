@@ -57,5 +57,16 @@ public class Board {
         return findOpenSpaces().size() == 0;
     }
 
+    public List<Integer> findPlayerMoves(String playerSymbol){
+        List<Integer> movesPlayed = new ArrayList();
+        for(Map.Entry<Integer, String> space : boardSpaces.entrySet()){
+            String spaceValue = space.getValue();
+            if(spaceValue == playerSymbol){
+                movesPlayed.add(space.getKey());
+            }
+        }
+        return movesPlayed;
+    }
+
 }
 
